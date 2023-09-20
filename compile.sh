@@ -16,7 +16,7 @@ cp ../jni/configure.ac configure.ac
 
 # Compile secp256k1 native code
 ./autogen.sh
-./configure --enable-jni --enable-module-ecdh --enable-experimental --enable-module-schnorrsig --enable-module-ecdsa-adaptor
+CFLAGS="-I$JAVA_HOME/include -I$JAVA_HOME/include/darwin" ./configure --enable-jni --enable-module-ecdh --enable-experimental --enable-module-schnorrsig --enable-module-ecdsa-adaptor
 # ./configure --enable-jni --enable-module-ecdh
 make CFLAGS="-std=c99"
 make

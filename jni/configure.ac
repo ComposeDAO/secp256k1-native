@@ -214,12 +214,11 @@ AC_ARG_WITH([valgrind], [AS_HELP_STRING([--with-valgrind=yes|no|auto],
 ###
 
 if test x"$use_jni" != x"no"; then
-   AX_JNI_INCLUDE_DIR
    have_jni_dependencies=yes
    if test x"$enable_module_ecdh" = x"no"; then
      have_jni_dependencies=no
    fi
-   if test "x$JNI_INCLUDE_DIRS" = "x"; then
+   if test "x$JAVA_HOME/include/jni.h" = "x" || test "x$JAVA_HOME/include/darwin/jni.h" = "x"; then
      have_jni_dependencies=no
    fi
    if test "x$have_jni_dependencies" = "xno"; then
@@ -230,9 +229,7 @@ if test x"$use_jni" != x"no"; then
      use_jni=no
    else
      use_jni=yes
-     for JNI_INCLUDE_DIR in $JNI_INCLUDE_DIRS; do
-       JNI_INCLUDES="$JNI_INCLUDES -I$JNI_INCLUDE_DIR"
-     done
+     JNI_INCLUDES="$JNI_INCLUDES -I$JAVA_HOME/include -I$JAVA_HOME/include/darwin"
    fi
  fi
 
