@@ -10,6 +10,8 @@ The following dependencies are required (plus Java and Maven):
 * `autoconf`
 * `build-essentials`
 * `gcc` (Linux) or `clang` (OS X) for building the shared library
+
+
     
 ### Installation
 
@@ -24,6 +26,12 @@ mvn clean install
 ```
 
 An appropriate Maven profile will automatically be used for Linux or OS X.
+
+### Building For Local Maven Repository
+
+1. `./compile.sh`
+2. `jar cvf mylib.jar -C ./secp256k1-tmp/.libs .`
+3. `mvn install:install-file -Dfile=mylib.jar -DgroupId=coop.firefly -DartifactId=secp256k1-native-osx-arm64 -Dversion=0.1-SNAPSHOT -Dpackaging=jar`
 
 ### License
 secp256k1 (and this repository for simplicity) is licensed under the [Apache 2.0 license](http://www.apache.org/licenses/LICENSE-2.0).
