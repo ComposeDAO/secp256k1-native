@@ -2,3 +2,4 @@ secp256k1-tmp/
 Dockerfile
 target/
 .vscode
+.aider*
