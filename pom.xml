@@ -15,6 +15,15 @@
 	</properties>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>./secp256k1-tmp/.libs</directory>
+				<targetPath>./</targetPath>
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -31,7 +40,8 @@
 				<version>3.2.0</version>
 				<configuration>
 					<includes>
-						<include>./secp256k1-tmp/.libs/</include>
+						<include>**/*.dylib</include>
+						<include>./secp256k1-tmp/.libs/**</include>
 					</includes>
 				</configuration>
 			</plugin>
