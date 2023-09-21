@@ -8,6 +8,7 @@ on:
     branches:
     - trying
     - staging
+    - original_master
 
 jobs:
   test-compile:
