@@ -74,8 +74,8 @@ jobs:
       - name: Build native code - Linux aarch64
         if: matrix.name == 'linux' && matrix.arch == 'aarch64'
         run: |
-          chmod +x compile_linux.sh
-          ./compile_linux.sh aarch64-linux-gnu
+          chmod +x compile.sh
+          ./compile.sh aarch64-linux-gnu
 
       - name: Build native code - MacOS aarch64
         if: matrix.name == 'macos' && matrix.arch == 'aarch64'
