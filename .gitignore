@@ -1,2 +1,5 @@
 secp256k1-tmp/
 Dockerfile
+
+.vscode
+target/
