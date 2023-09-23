@@ -41,7 +41,6 @@
 				<configuration>
 					<includes>
 						<include>**/*.dylib</include>
-						<include>./secp256k1-tmp/.libs/**</include>
 					</includes>
 				</configuration>
 			</plugin>
