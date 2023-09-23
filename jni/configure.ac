@@ -213,24 +213,20 @@ AC_ARG_WITH([valgrind], [AS_HELP_STRING([--with-valgrind=yes|no|auto],
 ### Handle config options (except for modules)
 ###
 
-if test x"$use_jni" != x"no"; then
-   have_jni_dependencies=yes
-   if test x"$enable_module_ecdh" = x"no"; then
-     have_jni_dependencies=no
-   fi
-   if test "x$JAVA_HOME/include/jni.h" = "x" || test "x$JAVA_HOME/include/darwin/jni.h" = "x"; then
-     have_jni_dependencies=no
-   fi
-   if test "x$have_jni_dependencies" = "xno"; then
-     if test x"$use_jni" = x"yes"; then
-       AC_MSG_ERROR([jni support explicitly requested but headers/dependencies were not found. Enable ECDH and try again.])
-     fi
-     AC_MSG_WARN([jni headers/dependencies not found. jni support disabled])
-     use_jni=no
-   else
-     use_jni=yes
-     JNI_INCLUDES="$JNI_INCLUDES -I$JAVA_HOME/include -I$JAVA_HOME/include/darwin"
-   fi
+if test x"$use_jni" != x"no"; then                                                                                                                                                                                   
+    have_jni_dependencies=yes                                                                                                                                                                                         
+    if test x"$enable_module_ecdh" = x"no"; then                                                                                                                                                                      
+      have_jni_dependencies=no                                                                                                                                                                                        
+    fi                                                                                                                                                                                                                
+    if test "x$JAVA_HOME/include/jni.h" = "x" || test "x$JAVA_HOME/include/darwin/jni.h" = "x" || test "x$JAVA_HOME/include/linux/jni.h" = "x"; then                                                                  
+      have_jni_dependencies=no                                                                                                                                                                                        
+    fi                                                                                                                                                                                                                
+    if test "x$have_jni_dependencies" = "xno"; then                                                                                                                                                                   
+      use_jni=no                                                                                                                                                                                                      
+    else                                                                                                                                                                                                              
+      use_jni=yes                                                                                                                                                                                                     
+      JNI_INCLUDES="$JNI_INCLUDES -I$JAVA_HOME/include -I$JAVA_HOME/include/darwin -I$JAVA_HOME/include/linux"                                                                                                        
+    fi                                                                                                                                                                                                                
  fi
 
 if test x"$req_valgrind" = x"no"; then
