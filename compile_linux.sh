@@ -16,8 +16,13 @@ cp ../jni/configure.ac configure.ac
 
 # Compile secp256k1 native code
 ./autogen.sh
-CFLAGS="-I$JAVA_HOME/include -I$JAVA_HOME/include/linux" ./configure --enable-jni --enable-module-ecdh --enable-experimental --enable-module-schnorrsig --enable-module-ecdsa-adaptor
-# ./configure --enable-jni --enable-module-ecdh
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    CFLAGS="-I$JAVA_HOME/include -I$JAVA_HOME/include/linux"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    CFLAGS="-I$JAVA_HOME/include -I$JAVA_HOME/include/darwin"
+fi
+CFLAGS="$CFLAGS -I$JAVA_HOME/include/linux"
+./configure --enable-jni --enable-module-ecdh --enable-experimental --enable-module-schnorrsig --enable-module-ecdsa-adaptor CFLAGS="$CFLAGS"
 make CFLAGS="-std=c99"
 make
 make check
