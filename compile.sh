@@ -21,7 +21,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     CFLAGS="-I$JAVA_HOME/include -I$JAVA_HOME/include/darwin"
 fi
-./configure --enable-jni --enable-module-ecdh --enable-experimental --enable-module-schnorrsig --enable-module-ecdsa-adaptor CFLAGS="$CFLAGS"
+./configure --host=aarch64-unknown-linux-gnu --enable-jni --enable-module-ecdh --enable-experimental --enable-module-schnorrsig --enable-module-ecdsa-adaptor CFLAGS="$CFLAGS"
 make CFLAGS="-std=c99"
 make
 make check

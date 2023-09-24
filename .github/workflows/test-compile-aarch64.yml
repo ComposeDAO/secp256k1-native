@@ -58,14 +58,14 @@ jobs:
           echo 'export PATH="/usr/local/opt/openjdk@11/bin:$PATH"' >> /Users/runner/.bash_profile
           # export CPPFLAGS="-I/usr/local/opt/openjdk@11/include"
 
-          # brew tap messense/macos-cross-toolchains
+          brew tap messense/macos-cross-toolchains
           # install aarch64-unknown-linux-gnu toolchain
-          # brew install aarch64-unknown-linux-gnu
+          brew install aarch64-unknown-linux-gnu
 
-          # brew install aarch64-elf-gcc
+          brew install aarch64-elf-gcc
 
-          # brew tap osx-cross/arm
-          # brew install arm-gcc-bin
+          brew tap osx-cross/arm
+          brew install arm-gcc-bin
 
       # - name: Build native code
       #   if: matrix.arch == 'amd64'
