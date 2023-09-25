@@ -76,12 +76,12 @@ jobs:
         if: matrix.name == 'linux' && matrix.arch == 'aarch64'
         run: |
           chmod +x compile.sh
-          ./compile.sh
+          ./compile_gh_actions.sh
 
       - name: Build native code - MacOS aarch64
         if: matrix.name == 'macos' && matrix.arch == 'aarch64'
         run: |
-          ./compile.sh
+          ./compile_gh_actions.sh
 
       - name: Export artifacts
         uses: actions/upload-artifact@v3
