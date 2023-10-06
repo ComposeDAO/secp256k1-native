@@ -34,6 +34,9 @@ jobs:
           - name: macos
             os: macos-11
             arch: arm64
+          - name: macos
+            os: macos-11
+            arch: arm64
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
