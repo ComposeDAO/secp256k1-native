@@ -18,6 +18,8 @@ cp ../jni/configure.ac configure.ac
 ./autogen.sh
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     CFLAGS="-I$JAVA_HOME/include -I$JAVA_HOME/include/linux"
+elif [[ "$OSTYPE" == "darwin"* ] && [ "$AARCH" ]]; then
+    CFLAGS="-I$JAVA_HOME/include -I$JAVA_HOME/include/darwin -mcpu=cortex-m2"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     CFLAGS="-I$JAVA_HOME/include -I$JAVA_HOME/include/darwin"
 fi
