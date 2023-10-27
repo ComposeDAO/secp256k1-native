@@ -3,3 +3,4 @@ Dockerfile
 target/
 .vscode
 .aider*
+.artifacts
